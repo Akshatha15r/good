@@ -1,0 +1,227 @@
+class Player:
+    def _init_(self,matches,goals,rating,name):
+        self.matches=matches
+        self.goals=goals
+        self.rating=rating
+        self.name=name
+        
+class FootballLeague:
+    def _init_(self,leagueName,PlayerList):
+        self.leagueName=leagueName
+        self.PlayerList=PlayerList
+        
+    def findMaximumPlayerByRating(self):
+        max_obj=max(self.PlayerList,key=lambda x:x.rating)
+        return max_obj
+    
+    def sortPlayerByGoals(self):
+        s=[]
+        s=sorted(self.PlayerList,key=lambda x:x.goals)
+        s1=[]
+        for i in s:
+            s1.append(i.goals)
+        if len(s1)==0:
+            return None
+        else:
+            return s1
+            
+if _name=='main_':
+    PlayerList=[]
+    limit=int(input())
+    for j in range(limit):
+        matches=int(input())
+        goals=int(input())
+        rating=int(input())
+        name=input()
+        PlayerList.append(Player(matches,goals,rating,name))
+    obj=FootballLeague("leagueName",PlayerList)
+    r1=obj.findMaximumPlayerByRating()
+    if(r1!=None):
+        print(r1.matches)
+        print(r1.goals)
+        print(r1.rating)
+        print(r1.name)
+    else:
+        print("No Data Found")
+    
+    r2=obj.sortPlayerByGoals()
+    for i in r2:
+        print(i)
+
+
+
+
+
+
+
+
+awk 'BEGIN{FS="-"; OFS = "-"}
+(NR>1){
+           count=0;
+           if(($2+$3+$4)>=200){
+               print $1"-" $2 "-" $3"-" $4
+               count++
+}
+}END
+{
+           if(count>0){
+                  print "Total: "count;
+             }
+           else{
+                  print "Total: "0;
+             }
+}'
+
+
+
+
+awk 'BEGIN{FS="-";OFS"-"}
+(NR>1){
+    
+    if($4>40000){
+        a=a+1;
+    }
+}END
+{
+    if(a>0){
+        print "Total count: "a
+    }
+    else{
+        print "Total count: "0
+    }
+}'
+
+
+
+
+
+class Book:
+    def __init__(self, pages,price, author,ID, title):
+        self.pages=pages
+        self.price=price
+        self.author=author
+        self.ID=ID
+        self.title=title
+        
+class BookStore:
+    def __init__(self,bookStoreName, BookList):
+        self.bookStoreName=bookStoreName
+        self.BookList=BookList
+        
+    def findMinimumBookByid(self):
+        min_obj=min(self.BookList, key=lambda x:x.ID)
+        return min_obj
+    def sortBookByid(self):
+        s=[]
+        s=sorted(self.BookList, key=lambda x:x.ID)
+        s1=[]
+        for i in s:
+            s1.append(i.ID)
+        if len(s1)==0:
+            return None
+        else:
+            return s1
+if __name__ =='__main__':
+    
+    BookList=[]
+    limit=int(input())
+    
+
+    for j in range (limit):
+        pages=int(input())
+        price=int(input())
+        author=input()
+        ID=int(input())
+        title=input()
+        BookList.append(Book(pages,price,author,ID,title))
+    obj=BookStore("abc",BookList)
+    r1=obj.findMinimumBookByid()
+    
+    if(r1!=None):
+        print(r1.pages)
+        print(r1.price)
+        print(r1.author)
+        print(r1.ID)
+        print(r1.title)
+    else:
+        print("No Data Found")
+    r2=obj.sortBookByid()
+    for i in r2:
+        print(i)
+
+
+
+
+
+awk 'BEGIN{FS=","; IGNORECASE=1}
+(NR>1){ 
+    count = 0;
+    if($3=="Finance"){
+        a=a+$4;
+        b=b+1;
+    }
+} END
+{
+ if(b>0){
+     print "Total Asset Price = "a
+ }   
+ else{
+        print "No Asset Found"
+ }
+}'
+
+
+
+
+
+
+
+
+
+class Team:
+    def __init__(self,owner,value,ID,name):
+        self.owner=owner
+        self.value=value
+        self.ID=ID
+        self.name=name
+class League:
+    def __init__(self,leagueName,teamList):
+        self.leagueName=leagueName
+        self.teamList=teamList
+        
+    def findMinimumTeamById(self):
+        min_obj=min(self.teamList, key=lambda x:x.ID)
+        return min_obj
+    def sortTeamById(self):
+        s=[]
+        s=sorted(self.teamList,key=lambda x:x.ID)
+        s1=[]
+        for i in s:
+            s1.append(i.ID)
+        if len(s1)==0:
+            return None
+        else:
+            return s1
+
+if __name__=='__main__':
+    limit=int(input())
+    teamList=[]
+    for j in range(limit):
+        owner=input()
+        value=float(input())
+        ID=int(input())
+        name=input()
+        teamList.append(Team(owner,value,ID,name))
+    obj= League("leagueName", teamList )
+    r1=obj.findMinimumTeamById()
+    if(r1!=None):
+        print(r1.owner)
+        print(r1.value)
+        print(r1.ID)
+        print(r1.name)
+    else:
+        print("No Data Found")
+        
+    r2= obj.sortTeamById()
+    for i in r2:
+        print (i)
